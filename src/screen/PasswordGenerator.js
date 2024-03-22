@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './PasswordGenerator.css'
 
 const PasswordGenerator = () => {
-  // State variables
   const [password, setPassword] = useState('');
   const [passwordLength, setPasswordLength] = useState(8);
   const [includeUppercase, setIncludeUppercase] = useState(true);
@@ -10,10 +9,7 @@ const PasswordGenerator = () => {
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(true);
 
-  // Function to generate a random password
   const generatePassword = () => {
-    // Logic to generate password based on selected criteria
-    // Customize this based on your requirements
     const characters = [];
     if (includeUppercase) characters.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
     if (includeLowercase) characters.push('abcdefghijklmnopqrstuvwxyz');
@@ -30,13 +26,12 @@ const PasswordGenerator = () => {
     setPassword(newPassword);
   };
 
-  // Function to copy the generated password to the clipboard
   const copyToClipboard = () => {
     navigator.clipboard.writeText(password);
   };
 
   return (
-    <div>
+    <div className='container'>
       <h1>Password Generator</h1>
       <div>
         <label>Password Length:</label>
@@ -46,7 +41,7 @@ const PasswordGenerator = () => {
           onChange={(e) => setPasswordLength(e.target.value)}
         />
       </div>
-      <div>
+      <div className='typeofpass'>
         <label>Include Uppercase:</label>
         <input
           type="checkbox"
@@ -54,7 +49,7 @@ const PasswordGenerator = () => {
           onChange={() => setIncludeUppercase(!includeUppercase)}
         />
       </div>
-      <div>
+      <div className='typeofpass'>
         <label>Include Lowercase:</label>
         <input
           type="checkbox"
@@ -62,7 +57,7 @@ const PasswordGenerator = () => {
           onChange={() => setIncludeLowercase(!includeLowercase)}
         />
       </div>
-      <div>
+      <div className='typeofpass'>
         <label>Include Numbers:</label>
         <input
           type="checkbox"
@@ -70,7 +65,7 @@ const PasswordGenerator = () => {
           onChange={() => setIncludeNumbers(!includeNumbers)}
         />
       </div>
-      <div>
+      <div className='typeofpass'>
         <label>Include Symbols:</label>
         <input
           type="checkbox"
@@ -79,7 +74,7 @@ const PasswordGenerator = () => {
         />
       </div>
       <button onClick={generatePassword}>Generate Password</button>
-      <div>
+      <div className='typeofgene'>
         <label>Generated Password:</label>
         <input type="text" value={password} readOnly />
         <button onClick={copyToClipboard}>Copy to Clipboard</button>
